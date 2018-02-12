@@ -48,6 +48,9 @@ describe('Test middleware', () => {
       send(null, ['a', 'b', 'c']);
       const json = res.json.args[0][0];
       assert(json._links);
+      assert(json._links.self);
+      assert(json._links.first);
+      assert(json._links.last);
       assert(json._embedded);
       assert(json._embedded.items);
       assert(json._page);
