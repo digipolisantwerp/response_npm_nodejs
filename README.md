@@ -7,7 +7,7 @@ function. if an error is passed, it wil be given to the callback function define
 If an array is passed, a third argument is expected: `pagingInformation` (not necessary but highly recommended). The function will take care of formatting it to hal+json.
 
 ## Usage
-
+### Example 
 ```
 const app = express();
 app.use(require('digipolis-response')());
@@ -17,6 +17,7 @@ app.get((req, res, next => {
   getItems(res.sendResponse(next, {
     collectionName: 'items', // if not supplied, items will be used as embedded name
     url: '/api/items' // if not supplied, will build an url of req.baseUrl + req.path
+    multipleEmbeds: boolean // (default false, when set to true, an object can be passed)
   }))
 }));
 
@@ -31,3 +32,5 @@ function getItems(callback) {
   )
 }
 ```
+
+### Example with multiple collections

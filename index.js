@@ -13,7 +13,7 @@ module.exports = function responseHandler() {
 
         pagingInformation = pagingInformation || {};
         const baseUrl = options.url || (req.baseUrl + req.path);
-        let result = Array.isArray(entity) ? formatHal(options.collectionName || 'items', entity, pagingInformation, baseUrl, req.params) : entity;
+        let result = Array.isArray(entity) || options.multipleEmbeds ? formatHal(options.collectionName || 'items', entity, pagingInformation, baseUrl, req.params) : entity;
         res.set('Content-Type', 'application/hal+json');
         return res.json(result);
       };

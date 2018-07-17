@@ -114,4 +114,35 @@ describe('Test middleware', () => {
       assert(json.h, 'i');
     });
   });
+
+  it('should be able to embed multiple collections', () => {
+    const multipleCollections = {
+      list1: ['test'],
+      list2: ['test2']
+    };
+
+    const handler = responseHandler();
+    handler(req, res, () => {
+      let send = res.sendResponse(() => { }, { multipleEmbeds: true });
+      send.bind(res);
+
+      send(null, multipleCollections);
+      const json = res.json.args[0][0];
+      assert(json._embedded.list1, multipleCollections.list1);
+      assert(json._embedded.list2, multipleCollections.list2);
+    });
+  });
+
+  it('should be able to override size', () => {
+    const size = 45;
+    const handler = responseHandler();
+    handler(req, res, () => {
+      let send = res.sendResponse(() => { });
+      send.bind(res);
+
+      send(null, ['test'], { size: size });
+      const json = res.json.args[0][0];
+      assert(json._page.size, size);
+    });
+  });
 });
