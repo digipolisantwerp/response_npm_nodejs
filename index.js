@@ -19,6 +19,21 @@ module.exports = function responseHandler() {
       };
     };
 
+    res.respond = (options) => {
+      options = options || {};
+      return (result) => {
+        const pagingInformation = result.pagingInformation || {};
+        const entity = result.entity || result.entities;
+        const baseUrl = options.url || (req.baseUrl + req.path);
+
+        let hal = Array.isArray(entity) || options.multipleEmbeds ? formatHal(options.collectionName || 'items', entity, pagingInformation, baseUrl, req.params) : entity;
+        
+        res.set('Content-Type', 'application/hal+json');
+        return res.json(hal);
+      }
+    }
+
     return next();
   };
+
 };

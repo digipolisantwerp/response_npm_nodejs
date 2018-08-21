@@ -1,9 +1,9 @@
 'use strict';
 
 const assert = require('assert');
-const responseHandler = require('../index');
+const responseHandler = require('..');
 const reqres = require('reqres');
-describe('Test middleware', () => {
+describe('Test middleware & response with callback', () => {
   let req;
   let res;
 
