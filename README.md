@@ -4,6 +4,7 @@ Digipolis-response adds a function to the res object which can be used to automa
 format hal+json. `res.sendResponse` returns a function which is an error-first callback 
 function. if an error is passed, it wil be given to the callback function defined in res.sendResponse.
 
+
 If an array is passed, a third argument is expected: `pagingInformation` (not necessary but highly recommended). The function will take care of formatting it to hal+json.
 
 ## Usage
