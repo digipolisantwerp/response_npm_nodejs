@@ -52,7 +52,7 @@ describe('Test middleware & response with callback', () => {
       assert(json._links.first);
       assert(json._links.last);
       assert(json._embedded);
-      assert(json._embedded.items);
+      assert(json._embedded.resourceList);
       assert(json._page);
       assert(json._page.size);
     });
@@ -71,7 +71,7 @@ describe('Test middleware & response with callback', () => {
       const json = res.json.args[0][0];
       assert(json._links);
       assert(json._embedded);
-      assert(json._embedded.items);
+      assert(json._embedded.resourceList);
       assert(json._page);
       assert(json._page.size);
     });
@@ -97,7 +97,7 @@ describe('Test middleware & response with callback', () => {
       const json = res.json.args[0][0];
       assert(json._links);
       assert(json._embedded);
-      assert(json._embedded.items);
+      assert(json._embedded.resourceList);
       assert(json._page);
       assert(json._page.size);
     });

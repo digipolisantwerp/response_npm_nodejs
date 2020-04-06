@@ -38,7 +38,7 @@ app.use(require('digipolis-response')());
 // also possible with router, etc...
 app.get('/items', (req, res, next => {
   getItems(res.sendResponse(next, {
-    collectionName: 'items', // if not supplied, items will be used as embedded name
+    collectionName: 'items', // if not supplied, resourceList will be used as embedded name
     url: '/api/items' // if not supplied, will build an url of req.baseUrl + req.path
     multipleEmbeds: boolean // (default false, when set to true, an object can be passed)
   }))

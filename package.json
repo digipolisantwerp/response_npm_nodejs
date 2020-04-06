@@ -1,5 +1,5 @@
 {
-  "name": "digipolis-response",
+  "name": "@digipolis/response",
   "version": "1.2.0",
   "description": "",
   "main": "index.js",

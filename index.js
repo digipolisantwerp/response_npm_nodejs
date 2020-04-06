@@ -13,7 +13,7 @@ module.exports = function responseHandler() {
 
         pagingInformation = pagingInformation || {};
         const baseUrl = options.url || (req.baseUrl + req.path);
-        let result = Array.isArray(entity) || options.multipleEmbeds ? formatHal(options.collectionName || 'items', entity, pagingInformation, baseUrl, req.query) : entity;
+        let result = Array.isArray(entity) || options.multipleEmbeds ? formatHal(options.collectionName || 'resourceList', entity, pagingInformation, baseUrl, req.query) : entity;
         res.set('Content-Type', 'application/hal+json');
         return res.json(result);
       };
@@ -26,7 +26,7 @@ module.exports = function responseHandler() {
         const entity = result.entity || result.entities;
         const baseUrl = options.url || (req.baseUrl + req.path);
 
-        let hal = Array.isArray(entity) || options.multipleEmbeds ? formatHal(options.collectionName || 'items', entity, pagingInformation, baseUrl, req.query) : entity;
+        let hal = Array.isArray(entity) || options.multipleEmbeds ? formatHal(options.collectionName || 'resourceList', entity, pagingInformation, baseUrl, req.query) : entity;
         
         res.set('Content-Type', 'application/hal+json');
         return res.json(hal);
